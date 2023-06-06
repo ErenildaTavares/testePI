@@ -25,6 +25,21 @@ public class Comentario {
     @JoinColumn(name = "postagem_id")
     @JsonIgnoreProperties("comentarios")
     private Postagem postagem;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    @JsonIgnoreProperties("comentarios")
+    private Usuario usuario;
+    
+    
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return id;
