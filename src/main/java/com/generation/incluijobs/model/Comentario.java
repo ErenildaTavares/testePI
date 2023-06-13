@@ -21,17 +21,14 @@ public class Comentario {
     @Size(max = 255, message = "O texto do comentário deve conter no máximo 255 caracteres")
     private String texto;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "postagem_id")
-    @JsonIgnoreProperties("comentarios")
-    private Postagem postagem;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
-    @JsonIgnoreProperties("comentarios")
-    private Usuario usuario;
-    
-    
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+
+	@ManyToOne
+	@JoinColumn(name = "postagem_id")
+	private Postagem postagem;
+
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -39,6 +36,14 @@ public class Comentario {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Postagem getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(Postagem postagem) {
+		this.postagem = postagem;
 	}
 
 	public Long getId() {
@@ -57,13 +62,6 @@ public class Comentario {
 		this.texto = texto;
 	}
 
-	public Postagem getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(Postagem postagem) {
-		this.postagem = postagem;
-	}
 }
 
 

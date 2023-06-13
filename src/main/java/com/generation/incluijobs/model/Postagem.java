@@ -1,6 +1,7 @@
 package com.generation.incluijobs.model;
 
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,17 +47,9 @@ public class Postagem {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-	
-	@OneToMany(mappedBy = "postagem", cascade = CascadeType.ALL)
-	private List<Comentario> comentarios;
 
-	public List<Comentario> getComentarios() {
-		return comentarios;
-	}
-
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
+	@OneToMany(mappedBy = "postagem")
+	Set<Comentario> comentarios;
 
 	public Usuario getUsuario() {
 		return usuario;
